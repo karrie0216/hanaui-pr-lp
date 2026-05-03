@@ -19,8 +19,9 @@
       --text-sub:      #4A4A4A;
       --text-muted:    #78909C;
       --border-light:  #E8EAED;
-      --shadow-sm:     0px 2px 4px rgba(0,0,0,0.16);
-      --shadow-md:     0px 4px 12px rgba(0,0,0,0.12);
+      --shadow-sm:     0px 2px 8px rgba(0,0,0,0.10);
+      --shadow-md:     0px 6px 20px rgba(0,0,0,0.10);
+      --radius-card:   16px;
     }
 
     body {
@@ -29,464 +30,418 @@
                    "Hiragino Sans", Meiryo, sans-serif;
       background: var(--bg-page);
       color: var(--text-primary);
-      line-height: 1.7;
+      line-height: 1.75;
       font-size: 16px;
     }
 
     /* ─── ヘッダー ─── */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       background: rgba(251,254,255,0.92);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-light);
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 14px 32px;
+      display: flex; align-items: center; justify-content: space-between;
     }
     .site-header__logo {
       font-family: "Noto Serif JP", serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--primary-dark);
-      letter-spacing: 0.08em;
+      font-size: 15px; font-weight: 700;
+      color: var(--primary-dark); letter-spacing: 0.08em;
     }
-    .site-header__back {
-      font-size: 13px;
-      color: var(--text-muted);
+    .site-header__cta {
+      font-size: 13px; font-weight: 700;
+      color: white; background: var(--primary);
+      padding: 8px 20px; border-radius: 999px;
       text-decoration: none;
+      transition: all 0.2s ease;
     }
-    .site-header__back:hover { color: var(--primary-dark); }
+    .site-header__cta:hover { background: var(--primary-dark); }
 
     /* ─── ヒーロー ─── */
     .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 72px 24px 80px;
-      text-align: center;
-      background: linear-gradient(160deg, #FFF8F0 0%, #FBFEFF 60%);
+      max-width: 1100px; margin: 0 auto;
+      padding: 72px 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
     }
-    .hero__deco {
-      position: absolute;
-      border-radius: 50%;
-      background: var(--primary-light);
-      opacity: 0.45;
-      pointer-events: none;
-    }
-    .hero__deco--1 { width: 360px; height: 360px; top: -100px; right: -80px; }
-    .hero__deco--2 { width: 220px; height: 220px; bottom: -60px; left: -40px; }
-    .hero__inner {
-      position: relative;
-      max-width: 680px;
-      margin: 0 auto;
-    }
+    .hero__text { }
     .pill-badge {
       display: inline-block;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      padding: 6px 16px;
-      border-radius: 999px;
-      margin-bottom: 24px;
+      background: var(--primary-light); color: var(--primary-dark);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      padding: 6px 16px; border-radius: 999px; margin-bottom: 24px;
     }
     .hero__title {
       font-family: "Noto Serif JP", serif;
-      font-size: clamp(22px, 5vw, 34px);
-      font-weight: 700;
-      line-height: 1.5;
-      color: var(--text-primary);
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 700; line-height: 1.5;
       margin-bottom: 20px;
     }
-    .hero__title em {
-      color: var(--primary-dark);
-      font-style: normal;
-    }
+    .hero__title em { color: var(--primary-dark); font-style: normal; }
     .hero__sub {
-      font-size: 15px;
-      line-height: 1.9;
-      color: var(--text-sub);
-      margin-bottom: 32px;
+      font-size: 15px; line-height: 1.9;
+      color: var(--text-sub); margin-bottom: 36px;
     }
+    .hero__sub em { color: var(--primary-dark); font-style: normal; }
+    .hero__btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-primary {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 14px 32px;
-      border-radius: 999px;
-      text-decoration: none;
+      display: inline-block; background: var(--primary); color: white;
+      font-size: 15px; font-weight: 700; padding: 14px 28px;
+      border-radius: 999px; text-decoration: none;
       box-shadow: 0 4px 16px rgba(253,194,117,0.4);
       transition: all 0.2s ease;
     }
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(253,194,117,0.5);
-    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
     .btn-ghost {
-      display: inline-block;
-      background: transparent;
-      color: var(--primary-dark);
-      font-size: 15px;
-      font-weight: 700;
-      padding: 14px 32px;
-      border-radius: 999px;
-      text-decoration: none;
-      border: 2px solid var(--primary);
-      transition: all 0.2s ease;
-      margin-left: 12px;
+      display: inline-block; background: transparent;
+      color: var(--primary-dark); font-size: 15px; font-weight: 700;
+      padding: 14px 28px; border-radius: 999px; text-decoration: none;
+      border: 2px solid var(--primary); transition: all 0.2s ease;
     }
-    .btn-ghost:hover {
-      background: var(--primary-light);
-      transform: translateY(-2px);
+    .btn-ghost:hover { background: var(--primary-light); transform: translateY(-2px); }
+
+    .hero__visual {
+      position: relative;
+    }
+    .hero__img-main {
+      width: 100%; height: 480px;
+      object-fit: cover; border-radius: 24px;
+      box-shadow: var(--shadow-md);
+    }
+    .hero__img-accent {
+      position: absolute;
+      width: 180px; height: 180px;
+      object-fit: cover; border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      border: 4px solid white;
+      bottom: -24px; left: -24px;
     }
 
     /* ─── セクション共通 ─── */
     .section {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 64px 24px;
+      max-width: 980px; margin: 0 auto; padding: 72px 40px;
+    }
+    .section--wide {
+      max-width: 1100px; margin: 0 auto; padding: 72px 40px;
     }
     .section__eyebrow {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--primary-dark);
-      margin-bottom: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      color: var(--primary-dark); margin-bottom: 10px;
+      text-transform: uppercase;
     }
     .section__title {
       font-family: "Noto Serif JP", serif;
-      font-size: clamp(20px, 4vw, 26px);
-      font-weight: 700;
-      line-height: 1.45;
-      margin-bottom: 32px;
-      color: var(--text-primary);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; line-height: 1.45;
+      margin-bottom: 36px;
     }
     .section-divider {
-      border: none;
-      height: 1px;
+      border: none; height: 1px;
       background: var(--border-light);
-      max-width: 860px;
-      margin: 0 auto;
+      max-width: 980px; margin: 0 auto;
     }
 
     /* ─── ストーリー ─── */
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 64px; align-items: start;
+    }
     .story__quote {
       font-family: "Noto Serif JP", serif;
-      font-size: 19px;
-      font-weight: 700;
-      color: var(--primary-dark);
-      line-height: 1.6;
+      font-size: 19px; font-weight: 700;
+      color: var(--primary-dark); line-height: 1.65;
       padding: 28px 32px 24px 44px;
       background: var(--primary-light);
-      border-radius: 12px;
-      margin: 32px 0;
+      border-radius: 14px; margin: 28px 0;
       position: relative;
     }
     .story__quote::before {
-      content: "\201C";
-      font-size: 72px;
-      color: var(--primary);
-      opacity: 0.3;
-      position: absolute;
-      top: -4px;
-      left: 12px;
-      line-height: 1;
-      font-family: "Noto Serif JP", serif;
+      content: "\201C"; font-size: 80px;
+      color: var(--primary); opacity: 0.28;
+      position: absolute; top: -8px; left: 10px;
+      line-height: 1; font-family: "Noto Serif JP", serif;
     }
     .story p {
-      font-size: 15px;
-      line-height: 1.9;
-      color: var(--text-sub);
-      margin-bottom: 16px;
+      font-size: 15px; line-height: 1.95;
+      color: var(--text-sub); margin-bottom: 18px;
+    }
+    .story__visual {
+      position: sticky; top: 120px;
+    }
+    .story__img {
+      width: 100%; height: 540px;
+      object-fit: cover; object-position: center top;
+      border-radius: 24px; box-shadow: var(--shadow-md);
     }
 
-    /* ─── できること ─── */
+    /* ─── AIセクション ─── */
+    .ai-banner {
+      position: relative; border-radius: 20px; overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .ai-banner__img {
+      width: 100%; height: 260px;
+      object-fit: cover; object-position: center 40%;
+      display: block;
+    }
+    .ai-banner__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 40px 48px;
+    }
+    .ai-banner__overlay h3 {
+      font-family: "Noto Serif JP", serif;
+      font-size: 22px; font-weight: 700; color: white;
+      margin-bottom: 12px; line-height: 1.4;
+    }
+    .ai-banner__overlay p {
+      font-size: 14px; color: rgba(255,255,255,0.88);
+      line-height: 1.85; max-width: 480px;
+    }
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 24px;
     }
     .skill-card {
-      background: white;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
+      background: white; border-radius: 14px;
+      padding: 24px; box-shadow: var(--shadow-sm);
       border-top: 3px solid var(--primary-light);
+      transition: all 0.2s ease;
     }
-    .skill-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-top-color: var(--primary);
-    }
+    .skill-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-top-color: var(--primary); }
     .skill-card__tag {
       display: inline-block;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 999px;
-      margin-bottom: 10px;
+      background: var(--primary-light); color: var(--primary-dark);
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px; margin-bottom: 12px;
     }
-    .skill-card__title {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-    .skill-card__desc {
-      font-size: 13px;
-      color: var(--text-sub);
-      line-height: 1.75;
-    }
-
-    /* ─── AI強み ─── */
-    .ai-highlight {
-      background: white;
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: var(--shadow-sm);
-      border-left: 4px solid var(--primary);
-      margin-bottom: 24px;
-    }
-    .ai-highlight__body h3 {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text-primary);
-    }
-    .ai-highlight__body p {
-      font-size: 14px;
-      color: var(--text-sub);
-      line-height: 1.85;
-    }
+    .skill-card__title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+    .skill-card__desc { font-size: 13px; color: var(--text-sub); line-height: 1.75; }
 
     /* ─── ペルソナタブ ─── */
     .persona-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
     }
     .persona-tab {
-      background: white;
-      border: 2px solid var(--border-light);
-      border-radius: 999px;
-      padding: 8px 18px;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      color: var(--text-muted);
-      transition: all 0.15s ease;
+      background: white; border: 2px solid var(--border-light);
+      border-radius: 999px; padding: 9px 20px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      color: var(--text-muted); transition: all 0.15s ease;
     }
-    .persona-tab:hover,
-    .persona-tab.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
+    .persona-tab:hover, .persona-tab.active {
+      background: var(--primary); border-color: var(--primary); color: white;
     }
     .persona-panel { display: none; }
     .persona-panel.active { display: block; }
 
-    .persona-header {
-      background: white;
-      border-radius: 12px;
-      padding: 28px;
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 16px;
+    .persona-img-wrap {
+      position: relative; border-radius: 20px; overflow: hidden; margin-bottom: 24px;
     }
-    .persona-header__title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--text-primary);
+    .persona-img {
+      width: 100%; height: 240px;
+      object-fit: cover; object-position: center;
+      display: block;
     }
-    .persona-header__desc {
-      font-size: 14px;
-      color: var(--text-sub);
-      line-height: 1.85;
-      background: #FFF8F0;
-      border-radius: 8px;
-      padding: 16px;
+    .persona-img-caption {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);
+      display: flex; align-items: flex-end;
+      padding: 20px 24px;
+    }
+    .persona-img-caption p {
+      font-family: "Noto Serif JP", serif;
+      font-size: 18px; font-weight: 700; color: white;
     }
 
+    .persona-desc {
+      font-size: 14px; color: var(--text-sub); line-height: 1.9;
+      background: #FFF8F0; border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 20px;
+    }
     .service-list { display: grid; gap: 12px; }
     .service-item {
-      background: white;
-      border-radius: 10px;
-      padding: 20px 24px;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
+      background: white; border-radius: 12px;
+      padding: 20px 24px; box-shadow: var(--shadow-sm);
+      display: grid; grid-template-columns: 36px 1fr; gap: 16px; align-items: start;
     }
     .service-item__num {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      font-size: 13px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--primary-light); color: var(--primary-dark);
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
       margin-top: 2px;
     }
-    .service-item__title {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .service-item__desc {
-      font-size: 13px;
-      color: var(--text-sub);
-      line-height: 1.8;
-    }
+    .service-item__title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .service-item__desc { font-size: 13px; color: var(--text-sub); line-height: 1.8; }
 
     /* ─── 稼働感 ─── */
-    .availability-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
+    .avail-layout {
+      display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: center;
     }
+    .avail__img {
+      width: 100%; height: 340px;
+      object-fit: cover; border-radius: 20px; box-shadow: var(--shadow-md);
+    }
+    .avail-cards { display: grid; gap: 16px; }
     .avail-card {
-      background: white;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
-      text-align: center;
+      background: white; border-radius: 14px;
+      padding: 20px 24px; box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .avail-card__dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--primary); flex-shrink: 0;
     }
     .avail-card__label {
-      font-size: 12px;
-      color: var(--text-muted);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      margin-bottom: 8px;
+      font-size: 12px; color: var(--text-muted); font-weight: 700; margin-bottom: 4px;
     }
-    .avail-card__value {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--primary-dark);
+    .avail-card__value { font-size: 16px; font-weight: 700; color: var(--primary-dark); }
+    .avail__note {
+      font-size: 14px; color: var(--text-muted); line-height: 1.85;
+      margin-top: 16px;
     }
 
     /* ─── CTA ─── */
     .cta-section {
-      background: linear-gradient(160deg, #FFF3E0 0%, #FFF8F0 100%);
-      padding: 72px 24px;
-      text-align: center;
+      position: relative; overflow: hidden;
+      padding: 96px 40px; text-align: center;
     }
+    .cta-section__bg {
+      position: absolute; inset: 0;
+      background-image: url('images/img11.png');
+      background-size: cover; background-position: center;
+      filter: brightness(0.4) saturate(0.6);
+    }
+    .cta-section__inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
     .cta-section__title {
       font-family: "Noto Serif JP", serif;
-      font-size: clamp(20px, 4vw, 28px);
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.5;
+      font-size: clamp(22px, 4vw, 32px); font-weight: 700;
+      color: white; line-height: 1.55; margin-bottom: 18px;
     }
+    .cta-section__title em { color: var(--primary); font-style: normal; }
     .cta-section__sub {
-      font-size: 15px;
-      color: var(--text-sub);
-      line-height: 1.9;
-      max-width: 500px;
-      margin: 0 auto 36px;
+      font-size: 15px; color: rgba(255,255,255,0.85);
+      line-height: 1.9; margin-bottom: 40px;
     }
-    .cta-btns {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
     /* ─── フッター ─── */
     .site-footer {
-      padding: 32px 24px;
-      text-align: center;
+      padding: 36px 40px; text-align: center;
       border-top: 1px solid var(--border-light);
     }
     .site-footer__name {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      margin-bottom: 4px;
+      font-size: 14px; color: var(--text-muted); font-weight: 700;
+      letter-spacing: 0.1em; margin-bottom: 4px;
     }
-    .site-footer__sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
+    .site-footer__sub { font-size: 12px; color: var(--text-muted); }
 
     /* ─── レスポンシブ ─── */
-    @media (max-width: 600px) {
-      .hero { padding: 56px 20px 64px; }
-      .section { padding: 48px 20px; }
-      .btn-ghost { margin-left: 0; }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 56px; }
+      .hero__visual { order: -1; }
+      .hero__img-main { height: 300px; }
+      .hero__img-accent { width: 120px; height: 120px; bottom: -16px; left: -12px; }
+      .story-layout { grid-template-columns: 1fr; gap: 40px; }
+      .story__visual { display: none; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .section { padding: 48px 24px; }
+      .section--wide { padding: 48px 24px; }
+      .avail-layout { grid-template-columns: 1fr; }
+      .avail__img { height: 240px; }
+      .ai-banner__overlay { padding: 24px 28px; }
+      .ai-banner__overlay h3 { font-size: 18px; }
+      .cta-section { padding: 72px 24px; }
+    }
+
+    @media (max-width: 480px) {
       .persona-tab { font-size: 12px; padding: 7px 14px; }
+      .hero__title { font-size: 22px; }
     }
   </style>
 </head>
 <body>
 
+<!-- ヘッダー -->
 <header class="site-header">
   <span class="site-header__logo">Hanaui PR｜橋本花織</span>
-  <a href="#contact" class="site-header__back">相談してみる &darr;</a>
+  <a href="#contact" class="site-header__cta">相談してみる</a>
 </header>
 
-<section class="hero">
-  <div class="hero__deco hero__deco--1"></div>
-  <div class="hero__deco hero__deco--2"></div>
-  <div class="hero__inner">
-    <div class="pill-badge">Hearth Portメンバーへ</div>
-    <h1 class="hero__title">
-      届かないところに手を伸ばす、<br>
-      <em>「孫の手」みたいな存在でいたい。</em>
-    </h1>
-    <p class="hero__sub">
-      才能も経験も独自の視点も、ちゃんとある。<br>
-      なのに「届け方がわからない」「一歩踏み出せない」——<br>
-      そういう理由で機会を逃している方の、<em style="color:var(--primary-dark);font-style:normal;">一番近くに寄り添うサポート</em>をしています。
-    </p>
-    <a href="#contact" class="btn-primary">気軽に話しかけてみる</a>
-    <a href="#persona" class="btn-ghost">サービス一覧を見る</a>
+
+<!-- ヒーロー -->
+<section style="background: linear-gradient(160deg, #FFF8F0 0%, #FBFEFF 55%);">
+  <div class="hero">
+    <div class="hero__text">
+      <div class="pill-badge">Hearth Portメンバーへ</div>
+      <h1 class="hero__title">
+        届かないところに手を伸ばす、<br>
+        <em>「孫の手」みたいな存在でいたい。</em>
+      </h1>
+      <p class="hero__sub">
+        才能も経験も独自の視点も、ちゃんとある。<br>
+        なのに「届け方がわからない」「一歩踏み出せない」——<br>
+        そういう理由で機会を逃している方の、<br>
+        <em>一番近くに寄り添うサポート</em>をしています。
+      </p>
+      <div class="hero__btns">
+        <a href="#contact" class="btn-primary">気軽に話しかけてみる</a>
+        <a href="#persona" class="btn-ghost">サービス一覧を見る</a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <img src="images/img01.png" alt="ワーキングママ" class="hero__img-main">
+      <img src="images/img09.png" alt="クリエイティブツール" class="hero__img-accent">
+    </div>
   </div>
 </section>
 
+
 <hr class="section-divider">
 
-<div class="section story">
-  <p class="section__eyebrow">STORY</p>
-  <h2 class="section__title">なぜ、これをやっているか</h2>
-  <p>本業は広報PRの代行・支援です。「大企業がやるやつ」って思われがちですが、私がやっていることをひとことで言うと——</p>
-  <div class="story__quote">
-    「あなたがやっていることの価値を、<br>ちゃんと届けるべき人に届くように整えるお手伝い」
+
+<!-- ストーリー -->
+<div class="section--wide">
+  <div class="story-layout">
+    <div class="story">
+      <p class="section__eyebrow">STORY</p>
+      <h2 class="section__title">なぜ、これをやっているか</h2>
+      <p>本業は広報PRの代行・支援です。「大企業がやるやつ」って思われがちですが、私がやっていることをひとことで言うと——</p>
+      <div class="story__quote">
+        「あなたがやっていることの価値を、<br>ちゃんと届けるべき人に届くように整えるお手伝い」
+      </div>
+      <p>ある個人事業主の方の話をさせてください。4〜5年かけて事業を育ててきた方で、「3ヶ月限定でプレスリリースを月1本作ってほしい」という依頼でした。毎月、その方の歩みや取り組みを時代の流れと結びつけながらプレスリリースを書いて、テレビ・新聞・Webメディアへアプローチしていきました。</p>
+      <p>しばらくして、こんな言葉をいただきました。</p>
+      <div class="story__quote" style="font-size:17px;">
+        「一人では見えなかった景色を見せてもらった」
+      </div>
+      <p>それがすごく嬉しくて。3ヶ月の契約は今も続いています。今は広報だけじゃなく、ブログ更新・ビジコン挑戦サポート・出前授業の企画営業——現場に集中できるよう、バックオフィスから事業全体を支える「万事屋（よろずや）」みたいな存在になっています。</p>
+      <p>ハスポのみなさんの自己紹介を読んで、こういうことをここでもやりたいな、と思いました。ここで営業っぽいことがしたいわけじゃなく、お互いにとってWin-Winで「一緒にやってよかった」と思える関係でいられたら、それが一番です。</p>
+    </div>
+    <div class="story__visual">
+      <img src="images/img08.png" alt="ママと子ども" class="story__img">
+    </div>
   </div>
-  <p>ある個人事業主の方の話をさせてください。4〜5年かけて事業を育ててきた方で、「3ヶ月限定でプレスリリースを月1本作ってほしい」という依頼でした。毎月、その方の歩みや取り組みを時代の流れと結びつけながらプレスリリースを書いて、テレビ・新聞・Webメディアへアプローチしていきました。</p>
-  <p>しばらくして、こんな言葉をいただきました。</p>
-  <div class="story__quote" style="font-size:17px;">
-    「一人では見えなかった景色を見せてもらった」
-  </div>
-  <p>それがすごく嬉しくて。3ヶ月の契約は今も続いています。今は広報だけじゃなく、ブログ更新・ビジコン挑戦サポート・出前授業の企画営業——現場に集中できるよう、バックオフィスから事業全体を支える「万事屋（よろずや）」みたいな存在になっています。</p>
-  <p>ハスポのみなさんの自己紹介を読んで、こういうことをここでもやりたいな、と思いました。ここで営業っぽいことがしたいわけじゃなく、お互いにとってWin-Winで「一緒にやってよかった」と思える関係でいられたら、それが一番です。</p>
 </div>
 
+
 <hr class="section-divider">
 
-<div class="section">
+
+<!-- AI×広報PR -->
+<div class="section--wide">
   <p class="section__eyebrow">AI × 広報PR</p>
-  <h2 class="section__title">AIをどれだけ使っているか、<br>何ができるか</h2>
-  <div class="ai-highlight">
-    <div class="ai-highlight__body">
+  <h2 class="section__title">AIをどれだけ使っているか、何ができるか</h2>
+  <div class="ai-banner">
+    <img src="images/img09.png" alt="AIと仕事" class="ai-banner__img">
+    <div class="ai-banner__overlay">
       <h3>Claude Codeをほぼ毎日使っています</h3>
-      <p>コードを書くための道具というより——文章の設計・量産・サイト制作・ドキュメント自動生成まで、実務のかなりの部分をAIと組み合わせて動かしている感じです。以前なら数日かかっていた作業が数時間で終わることも多く、そのコスト削減をそのままサポート費用の負担軽減につなげられるのが、今の私の強みのひとつです。</p>
+      <p>コードを書くための道具というより——文章の設計・量産・サイト制作・ドキュメント自動生成まで、実務のかなりの部分をAIと組み合わせて動かしています。以前なら数日かかっていた作業が数時間で終わることも多く、そのコスト削減をそのままサポート費用の負担軽減につなげられるのが、今の私の強みのひとつです。</p>
     </div>
   </div>
   <div class="skills-grid">
@@ -523,265 +478,226 @@
   </div>
 </div>
 
+
 <hr class="section-divider">
 
-<div id="persona" class="section">
+
+<!-- ペルソナ別サービス -->
+<div id="persona" class="section--wide">
   <p class="section__eyebrow">FOR WHOM</p>
   <h2 class="section__title">どんな方に、何ができるか</h2>
+
   <div class="persona-tabs">
-    <button class="persona-tab active" onclick="showPersona('a', this)">作り手・表現者</button>
-    <button class="persona-tab" onclick="showPersona('b', this)">会社員×副業</button>
-    <button class="persona-tab" onclick="showPersona('c', this)">海外・ノマド</button>
-    <button class="persona-tab" onclick="showPersona('d', this)">育休・専業から</button>
-    <button class="persona-tab" onclick="showPersona('e', this)">ローカル事業者</button>
-    <button class="persona-tab" onclick="showPersona('f', this)">フリーランス</button>
+    <button class="persona-tab active" onclick="showPersona('a',this)">作り手・表現者</button>
+    <button class="persona-tab" onclick="showPersona('b',this)">会社員×副業</button>
+    <button class="persona-tab" onclick="showPersona('c',this)">海外・ノマド</button>
+    <button class="persona-tab" onclick="showPersona('d',this)">育休・専業から</button>
+    <button class="persona-tab" onclick="showPersona('e',this)">ローカル事業者</button>
+    <button class="persona-tab" onclick="showPersona('f',this)">フリーランス</button>
   </div>
 
   <!-- A -->
   <div id="persona-a" class="persona-panel active">
-    <div class="persona-header">
-      <p class="persona-header__title">作り手・表現者タイプ</p>
-      <p class="persona-header__desc">ガラス作品、写真、イラスト、ZINEなど、すでに「作品」がある方。センスも表現力も、ちゃんとある。なのに「売る・届ける・言語化する」部分だけが手薄で——「好きって言ってくれる人はいるんだけど……」って感じている方に届いてほしいです。</p>
+    <div class="persona-img-wrap">
+      <img src="images/img05.png" alt="作り手・表現者" class="persona-img">
+      <div class="persona-img-caption"><p>作り手・表現者タイプ</p></div>
     </div>
+    <p class="persona-desc">ガラス作品、写真、イラスト、ZINEなど、すでに「作品」がある方。センスも表現力も、ちゃんとある。なのに「売る・届ける・言語化する」部分だけが手薄で——「好きって言ってくれる人はいるんだけど……」って感じている方に届いてほしいです。</p>
     <div class="service-list">
       <div class="service-item">
         <div class="service-item__num">1</div>
-        <div>
-          <p class="service-item__title">プレスリリース作成</p>
-          <p class="service-item__desc">個展・ZINE発売・新作発表のタイミングで、生活系・旅行系・アート系メディアに向けたプレスリリースを作ります。「こんなイベントをやります」ではなく「なぜ今このアーティストが注目されるのか」という時流起点の構成で。アプローチ先のメディアリストアップまで込みで対応。</p>
-        </div>
+        <div><p class="service-item__title">プレスリリース作成</p><p class="service-item__desc">個展・ZINE発売・新作発表のタイミングで、生活系・旅行系・アート系メディアに向けたプレスリリースを作ります。「なぜ今このアーティストが注目されるのか」という時流起点の構成で。アプローチ先のメディアリストアップまで込みで対応。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">2</div>
-        <div>
-          <p class="service-item__title">オンラインショップの文章整備</p>
-          <p class="service-item__desc">BASE・STORES・BOOTHの商品説明文・プロフィール・ショップコンセプト文をセットで作ります。「何を売っているかの説明」じゃなく「なぜあなたから買いたいのか」を読んだ人が感じる文章にすることを意識しています。</p>
-        </div>
+        <div><p class="service-item__title">オンラインショップの文章整備</p><p class="service-item__desc">BASE・STORES・BOOTHの商品説明文・プロフィール・ショップコンセプト文をセットで作ります。「なぜあなたから買いたいのか」を読んだ人が感じる文章にすることを意識しています。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">3</div>
-        <div>
-          <p class="service-item__title">ZINE電子版の制作・販売ページ設計</p>
-          <p class="service-item__desc">紙のZINEをPDF化して電子販売できる形に整えます。BOOTHのショップページ文章とセットで、全国・海外から買える状態を一気に作ります。</p>
-        </div>
+        <div><p class="service-item__title">ZINE電子版の制作・販売ページ設計</p><p class="service-item__desc">紙のZINEをPDF化して電子販売できる形に整えます。BOOTHのショップページ文章とセットで、全国・海外から買える状態を一気に作ります。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">4</div>
-        <div>
-          <p class="service-item__title">ポートフォリオサイト制作</p>
-          <p class="service-item__desc">写真・イラスト・デザイン作品を見やすく並べたポートフォリオサイトをStudioで制作。仕事依頼の問い合わせフォームやSNSへのリンク整備も込みで対応します。</p>
-        </div>
+        <div><p class="service-item__title">ポートフォリオサイト制作</p><p class="service-item__desc">写真・イラスト・デザイン作品を見やすく並べたポートフォリオサイトをStudioで制作。仕事依頼の問い合わせフォームやSNSへのリンク整備も込みで対応します。</p></div>
       </div>
     </div>
   </div>
 
   <!-- B -->
   <div id="persona-b" class="persona-panel">
-    <div class="persona-header">
-      <p class="persona-header__title">会社員 × 副業・発信スタートタイプ</p>
-      <p class="persona-header__desc">本業の軸はある。でも「何を・どう発信するか」が言語化できていなくて動き出せていない方。2つ以上の経験や属性を持っているのに一言で言い表せない。「自分が発信できるほどのことなんてあるのか……」ってなっちゃう方へ。その「一言で言えない感じ」、実はポジションになるんです。</p>
+    <div class="persona-img-wrap">
+      <img src="images/img10.png" alt="会社員×副業" class="persona-img">
+      <div class="persona-img-caption"><p>会社員 × 副業・発信スタートタイプ</p></div>
     </div>
+    <p class="persona-desc">本業の軸はある。でも「何を・どう発信するか」が言語化できていなくて動き出せていない方。2つ以上の経験や属性を持っているのに一言で言い表せない。「自分が発信できるほどのことなんてあるのか……」ってなっちゃう方へ。その「一言で言えない感じ」、実はポジションになるんです。</p>
     <div class="service-list">
       <div class="service-item">
         <div class="service-item__num">1</div>
-        <div>
-          <p class="service-item__title">ニッチポジションの言語化</p>
-          <p class="service-item__desc">「建築の仕事 × カメラ」「IT企業勤務 × 地方移住 × 育児」のように、複数の経験や属性を掛け合わせた「あなたにしかないポジション」を一文に落とします。1〜2時間のヒアリングで作ります。</p>
-        </div>
+        <div><p class="service-item__title">ニッチポジションの言語化</p><p class="service-item__desc">「建築の仕事 × カメラ」「IT企業勤務 × 地方移住 × 育児」のように、複数の経験や属性を掛け合わせた「あなたにしかないポジション」を一文に落とします。1〜2時間のヒアリングで作ります。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">2</div>
-        <div>
-          <p class="service-item__title">note・ブログの発信設計</p>
-          <p class="service-item__desc">最初の12本の記事テーマと、書きやすい順番、記事構成テンプレートをセットで渡します。「何を書くか」と「どう構成するか」は私が設計するので、あとは書くだけの状態にします。</p>
-        </div>
+        <div><p class="service-item__title">note・ブログの発信設計</p><p class="service-item__desc">最初の12本の記事テーマと、書きやすい順番、記事構成テンプレートをセットで渡します。「何を書くか」と「どう構成するか」は私が設計するので、あとは書くだけの状態にします。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">3</div>
-        <div>
-          <p class="service-item__title">Instagram × noteの連携設計</p>
-          <p class="service-item__desc">Instagramで「興味を持ってもらう」→ noteで「深く読んでもらう」という2段階の動線を設計。2つのアカウントがバラバラにならない設計にします。</p>
-        </div>
+        <div><p class="service-item__title">Instagram × noteの連携設計</p><p class="service-item__desc">Instagramで「興味を持ってもらう」→ noteで「深く読んでもらう」という2段階の動線を設計。2つのアカウントがバラバラにならない設計にします。</p></div>
       </div>
     </div>
   </div>
 
   <!-- C -->
   <div id="persona-c" class="persona-panel">
-    <div class="persona-header">
-      <p class="persona-header__title">海外・ノマド生活者タイプ</p>
-      <p class="persona-header__desc">海外在住・ノマドライフ・多拠点生活など、日本に住んでいる人にはない体験・視点・環境を持っている方。その経験、めちゃくちゃ価値があるんですが——日本のオーディエンスへの届け方が整っていないことが多いんです。「向こうにいる間にやっておけばよかった」ってなる前に、一緒に動けたらと思います。</p>
+    <div class="persona-img-wrap">
+      <img src="images/img03.png" alt="海外・ノマド" class="persona-img" style="object-position: center 30%;">
+      <div class="persona-img-caption"><p>海外・ノマド生活者タイプ</p></div>
     </div>
+    <p class="persona-desc">海外在住・ノマドライフ・多拠点生活など、日本に住んでいる人にはない体験・視点・環境を持っている方。その経験、めちゃくちゃ価値があるんですが——日本のオーディエンスへの届け方が整っていないことが多いんです。「向こうにいる間にやっておけばよかった」ってなる前に、一緒に動けたらと思います。</p>
     <div class="service-list">
       <div class="service-item">
         <div class="service-item__num">1</div>
-        <div>
-          <p class="service-item__title">旅・生活ブログのコンセプト設計</p>
-          <p class="service-item__desc">「何を届けるためのブログか」というコンセプトから入り、読者像・記事の方向性・最初の10本のテーマを設計。日本にいては代わりに体験できない視点を、日本人読者に刺さる切り口で発信する設計にします。</p>
-        </div>
+        <div><p class="service-item__title">旅・生活ブログのコンセプト設計</p><p class="service-item__desc">「何を届けるためのブログか」というコンセプトから入り、読者像・記事の方向性・最初の10本のテーマを設計。日本にいては代わりに体験できない視点を、日本人読者に刺さる切り口で発信する設計にします。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">2</div>
-        <div>
-          <p class="service-item__title">海外経験 × 専門性のダブル発信設計</p>
-          <p class="service-item__desc">「日本語教師 × 旅ノマド」「デザイナー × 元バックパッカー」のように、海外経験と職業・専門性を掛け合わせた独自ポジションで発信する戦略を設計。どの媒体で・何を・どの頻度で発信するかまで整理します。</p>
-        </div>
+        <div><p class="service-item__title">海外経験 × 専門性のダブル発信設計</p><p class="service-item__desc">「日本語教師 × 旅ノマド」「デザイナー × 元バックパッカー」のように、海外経験と職業・専門性を掛け合わせた独自ポジションで発信する戦略を設計。どの媒体で・何を・どの頻度で発信するかまで整理します。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">3</div>
-        <div>
-          <p class="service-item__title">日本メディアへのプレスリリース</p>
-          <p class="service-item__desc">海外在住者が日本のライフスタイル系・旅行系・子育て系メディアで取り上げられるためのプレスリリースを作ります。「現地にいるからこそ書けること」を切り口にすることで、単なる旅行記とは違う取材価値が生まれます。</p>
-        </div>
+        <div><p class="service-item__title">日本メディアへのプレスリリース</p><p class="service-item__desc">海外在住者が日本のライフスタイル系・旅行系・子育て系メディアで取り上げられるためのプレスリリースを作ります。「現地にいるからこそ書けること」を切り口にすることで、単なる旅行記とは違う取材価値が生まれます。</p></div>
       </div>
     </div>
   </div>
 
   <!-- D -->
   <div id="persona-d" class="persona-panel">
-    <div class="persona-header">
-      <p class="persona-header__title">育休・専業主婦から何かを始めたいタイプ</p>
-      <p class="persona-header__desc">「何かやりたい」という気持ちはある。でも「何を・どこから始めればいいか」が見えていない方。「そんな経験、誰でもあるじゃないですか」って思ってること、実はニッチで需要があったりするんですよね。一緒に棚卸ししましょう。</p>
+    <div class="persona-img-wrap">
+      <img src="images/img04.png" alt="育休・専業から" class="persona-img">
+      <div class="persona-img-caption"><p>育休・専業主婦から何かを始めたいタイプ</p></div>
     </div>
+    <p class="persona-desc">「何かやりたい」という気持ちはある。でも「何を・どこから始めればいいか」が見えていない方。「そんな経験、誰でもあるじゃないですか」って思ってること、実はニッチで需要があったりするんですよね。一緒に棚卸ししましょう。</p>
     <div class="service-list">
       <div class="service-item">
         <div class="service-item__num">1</div>
-        <div>
-          <p class="service-item__title">強みの棚卸し + 自己PR文の作成</p>
-          <p class="service-item__desc">これまでの仕事・子育て・趣味・好きなことをヒアリングして「私にしか書けないもの」を引き出します。公務員経験、飲食業・日本酒の知識、福祉の現場、多子育児のリアルなど——「それって強みになるの？」と感じているものが、実はニッチで需要のある発信テーマになることがほとんどです。</p>
-        </div>
+        <div><p class="service-item__title">強みの棚卸し + 自己PR文の作成</p><p class="service-item__desc">これまでの仕事・子育て・趣味・好きなことをヒアリングして「私にしか書けないもの」を引き出します。公務員経験、飲食業・日本酒の知識、福祉の現場、多子育児のリアルなど——「それって強みになるの？」と感じているものが、実はニッチで需要のある発信テーマになることがほとんどです。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">2</div>
-        <div>
-          <p class="service-item__title">note発信テンプレートの提供</p>
-          <p class="service-item__desc">「体験記録型」「学び共有型」「日常考察型」の3パターンの記事構成テンプレートを渡します。テーマを当てはめるだけで記事が書けるようになるので、「書きたいけど書き方がわからない」という状態を解消します。</p>
-        </div>
+        <div><p class="service-item__title">note発信テンプレートの提供</p><p class="service-item__desc">「体験記録型」「学び共有型」「日常考察型」の3パターンの記事構成テンプレートを渡します。テーマを当てはめるだけで記事が書けるようになるので、「書きたいけど書き方がわからない」という状態を解消します。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">3</div>
-        <div>
-          <p class="service-item__title">小さなデジタル商品の設計</p>
-          <p class="service-item__desc">得意なことや経験を、BASE・BOOTHで100〜500円で売れる形（PDFチェックリスト・テンプレート・まとめ資料）にパッケージングします。設計・タイトル・説明文・価格設定まで一緒に考えます。</p>
-        </div>
+        <div><p class="service-item__title">小さなデジタル商品の設計</p><p class="service-item__desc">得意なことや経験を、BASE・BOOTHで100〜500円で売れる形（PDFチェックリスト・テンプレート・まとめ資料）にパッケージングします。設計・タイトル・説明文・価格設定まで一緒に考えます。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">4</div>
-        <div>
-          <p class="service-item__title">ビジネスコンテストへの挑戦サポート</p>
-          <p class="service-item__desc">やりたいことをビジコンの応募書類にまとめる作業は、自分のことだからこそ難しいんですよね。事業の強みと価値の整理、審査員に刺さる切り口の設計、書類全体の構成作りをサポートします。</p>
-        </div>
+        <div><p class="service-item__title">ビジネスコンテストへの挑戦サポート</p><p class="service-item__desc">やりたいことをビジコンの応募書類にまとめる作業は、自分のことだからこそ難しいんですよね。事業の強みと価値の整理、審査員に刺さる切り口の設計、書類全体の構成作りをサポートします。</p></div>
       </div>
     </div>
   </div>
 
   <!-- E -->
   <div id="persona-e" class="persona-panel">
-    <div class="persona-header">
-      <p class="persona-header__title">ローカル事業者・場づくりタイプ</p>
-      <p class="persona-header__desc">ユニークな場所・コンセプト・ストーリーを持っている方。「1日1名限定」「離島産の柑橘」「屋台での婚活」など、数字だけでは語れない背景と物語がある事業。でも今は、地元やSNSのフォロワーの範囲にしか届いていない——そんな方です。「プレスリリースって大企業がやるもの」という先入観、ぜひ捨ててください。</p>
+    <div class="persona-img-wrap">
+      <img src="images/img06.png" alt="ローカル事業者" class="persona-img">
+      <div class="persona-img-caption"><p>ローカル事業者・場づくりタイプ</p></div>
     </div>
+    <p class="persona-desc">ユニークな場所・コンセプト・ストーリーを持っている方。「1日1名限定」「離島産の柑橘」「屋台での婚活」など、数字だけでは語れない背景と物語がある事業。でも今は地元やSNSのフォロワーの範囲にしか届いていない——。「プレスリリースって大企業がやるもの」という先入観、ぜひ捨ててください。</p>
     <div class="service-list">
       <div class="service-item">
         <div class="service-item__num">1</div>
-        <div>
-          <p class="service-item__title">プレスリリース作成（全国メディア向け）</p>
-          <p class="service-item__desc">「なぜ今このサービスが生まれたのか」を時流と絡めた構成で書き、旅行系・ライフスタイル系・地方移住系の媒体にアプローチ。プレスリリースとは「記者が記事にしたくなる素材を渡す文章」です。その視点で構成を設計します。</p>
-        </div>
+        <div><p class="service-item__title">プレスリリース作成（全国メディア向け）</p><p class="service-item__desc">「なぜ今このサービスが生まれたのか」を時流と絡めた構成で書き、旅行系・ライフスタイル系・地方移住系の媒体にアプローチ。プレスリリースとは「記者が記事にしたくなる素材を渡す文章」です。その視点で構成を設計します。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">2</div>
-        <div>
-          <p class="service-item__title">LP・事業紹介文のリニューアル</p>
-          <p class="service-item__desc">今あるサイトやサービス紹介文を、「何ができるかの説明」から「読んだ人が行きたくなる・依頼したくなる文章」に書き直します。トップキャッチ・コンセプト文・依頼の流れ・FAQの4点をセットでリニューアル。</p>
-        </div>
+        <div><p class="service-item__title">LP・事業紹介文のリニューアル</p><p class="service-item__desc">今あるサイトやサービス紹介文を、「何ができるかの説明」から「読んだ人が行きたくなる・依頼したくなる文章」に書き直します。トップキャッチ・コンセプト文・依頼の流れ・FAQの4点をセットでリニューアル。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">3</div>
-        <div>
-          <p class="service-item__title">SNS発信の2軸設計</p>
-          <p class="service-item__desc">「地元の人に知ってもらう」発信と「全国・海外から来てもらう」発信は、ターゲットが違うので分けて設計する必要があります。どの媒体で・何を・どんな言葉で発信するかを整理します。</p>
-        </div>
+        <div><p class="service-item__title">SNS発信の2軸設計</p><p class="service-item__desc">「地元の人に知ってもらう」発信と「全国・海外から来てもらう」発信は、ターゲットが違うので分けて設計する必要があります。どの媒体で・何を・どんな言葉で発信するかを整理します。</p></div>
       </div>
     </div>
   </div>
 
   <!-- F -->
   <div id="persona-f" class="persona-panel">
-    <div class="persona-header">
-      <p class="persona-header__title">フリーランス・個人事業主（稼働中）タイプ</p>
-      <p class="persona-header__desc">すでに動いている。複数のスキルや肩書きを持っている。でも「サービスとして整理できていない」「新規の仕事は紹介経由がほとんどで、仕組みがない」という状態の方。「それ、私のことだ……」ってなった方、一緒に整理しましょう。</p>
+    <div class="persona-img-wrap">
+      <img src="images/img07.png" alt="フリーランス" class="persona-img">
+      <div class="persona-img-caption"><p>フリーランス・個人事業主（稼働中）タイプ</p></div>
     </div>
+    <p class="persona-desc">すでに動いている。複数のスキルや肩書きを持っている。でも「サービスとして整理できていない」「新規の仕事は紹介経由がほとんどで、仕組みがない」という状態の方。「それ、私のことだ……」ってなった方、一緒に整理しましょう。</p>
     <div class="service-list">
       <div class="service-item">
         <div class="service-item__num">1</div>
-        <div>
-          <p class="service-item__title">サービスLP文章の作成</p>
-          <p class="service-item__desc">今やっていることを整理して、ターゲット・強み・実績・依頼の流れ・FAQを揃えた文章パッケージを作ります。Studioでのサイト制作もセットで対応できます。</p>
-        </div>
+        <div><p class="service-item__title">サービスLP文章の作成</p><p class="service-item__desc">今やっていることを整理して、ターゲット・強み・実績・依頼の流れ・FAQを揃えた文章パッケージを作ります。Studioでのサイト制作もセットで対応できます。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">2</div>
-        <div>
-          <p class="service-item__title">プロフィール文の4パターン整備</p>
-          <p class="service-item__desc">note用・Instagram用・名刺用・提案書用、それぞれ用途の違うプロフィール文を一度に作ります。まず「あなたらしさを表す一文」を決めてから、媒体ごとに長さと切り口を変えていきます。</p>
-        </div>
+        <div><p class="service-item__title">プロフィール文の4パターン整備</p><p class="service-item__desc">note用・Instagram用・名刺用・提案書用、それぞれ用途の違うプロフィール文を一度に作ります。まず「あなたらしさを表す一文」を決めてから、媒体ごとに長さと切り口を変えていきます。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">3</div>
-        <div>
-          <p class="service-item__title">実績・事例の文章化</p>
-          <p class="service-item__desc">「○○をやりました」という実績の書き方を、「クライアントにとって何が変わったか」という視点の文章に変えます。実績は「変化と数字」で語ることで、読んだ人への説得力がぐっと上がります。</p>
-        </div>
+        <div><p class="service-item__title">実績・事例の文章化</p><p class="service-item__desc">「○○をやりました」という実績の書き方を、「クライアントにとって何が変わったか」という視点の文章に変えます。実績は「変化と数字」で語ることで、読んだ人への説得力がぐっと上がります。</p></div>
       </div>
       <div class="service-item">
         <div class="service-item__num">4</div>
-        <div>
-          <p class="service-item__title">クライアント向けメール雛形作成</p>
-          <p class="service-item__desc">問い合わせへの返信・ヒアリング依頼・提案書添付メールの3本をひな形として作ります。毎回ゼロから書かなくてよくなるので、レスポンスの質と速度が上がります。</p>
-        </div>
+        <div><p class="service-item__title">クライアント向けメール雛形作成</p><p class="service-item__desc">問い合わせへの返信・ヒアリング依頼・提案書添付メールの3本をひな形として作ります。毎回ゼロから書かなくてよくなるので、レスポンスの質と速度が上がります。</p></div>
       </div>
     </div>
   </div>
 </div>
 
+
 <hr class="section-divider">
 
-<div class="section">
-  <p class="section__eyebrow">AVAILABILITY</p>
-  <h2 class="section__title">どのくらい動けるか</h2>
-  <p style="font-size:15px;color:var(--text-sub);line-height:1.9;margin-bottom:24px;">本業があるので、がっつりフルコミットは難しいですが、月に数件くらいなら一緒に動けます。「ちょっとだけ手を貸してほしい」から「一緒にじっくり作りたい」まで、話しながら決められたら。</p>
-  <div class="availability-cards">
-    <div class="avail-card">
-      <p class="avail-card__label">月あたりの件数</p>
-      <p class="avail-card__value">数件まで</p>
+
+<!-- 稼働感 -->
+<div class="section--wide">
+  <div class="avail-layout">
+    <div>
+      <p class="section__eyebrow">AVAILABILITY</p>
+      <h2 class="section__title" style="margin-bottom:20px;">どのくらい動けるか</h2>
+      <p style="font-size:15px;color:var(--text-sub);line-height:1.9;margin-bottom:28px;">本業があるので、がっつりフルコミットは難しいですが、月に数件くらいなら一緒に動けます。「ちょっとだけ手を貸してほしい」から「一緒にじっくり作りたい」まで、話しながら決められたら。</p>
+      <div class="avail-cards">
+        <div class="avail-card">
+          <div class="avail-card__dot"></div>
+          <div><p class="avail-card__label">月あたりの件数</p><p class="avail-card__value">数件まで</p></div>
+        </div>
+        <div class="avail-card">
+          <div class="avail-card__dot"></div>
+          <div><p class="avail-card__label">小さな相談</p><p class="avail-card__value">もちろん大歓迎</p></div>
+        </div>
+        <div class="avail-card">
+          <div class="avail-card__dot"></div>
+          <div><p class="avail-card__label">まず気軽に</p><p class="avail-card__value">DM・コメントで</p></div>
+        </div>
+      </div>
+      <p class="avail__note">プレスリリース1本、発信の方向性を整理したい、noteのネタが尽きてきた、サイトをとりあえず形にしたい——「小さいかな？」と思うことでも全然大丈夫です。むしろそこから始まることの方が多いので。</p>
     </div>
-    <div class="avail-card">
-      <p class="avail-card__label">小さな相談</p>
-      <p class="avail-card__value">もちろん大歓迎</p>
-    </div>
-    <div class="avail-card">
-      <p class="avail-card__label">まず気軽に</p>
-      <p class="avail-card__value">DM・コメントで</p>
-    </div>
+    <img src="images/img02.png" alt="夜の作業時間" class="avail__img">
   </div>
-  <p style="font-size:14px;color:var(--text-muted);margin-top:20px;">プレスリリース1本、発信の方向性を整理したい、noteのネタが尽きてきた、サイトをとりあえず形にしたい——「小さいかな？」と思うことでも全然大丈夫です。むしろそこから始まることの方が多いので。</p>
 </div>
 
+
+<!-- CTA -->
 <section id="contact" class="cta-section">
-  <h2 class="cta-section__title">
-    「こういうこと、相談できる？」<br>
-    <em style="color:var(--primary-dark);font-style:normal;">その一言から始まることの方が多いです。</em>
-  </h2>
-  <p class="cta-section__sub">
-    金額・規模・依頼になるかどうかも気にせず、まず気軽に話しかけてもらえると嬉しいです。
-    一緒にやってよかった、と思える関係でいられたら、それが一番です。
-  </p>
-  <div class="cta-btns">
-    <a href="#" class="btn-primary">DMで話しかける</a>
-    <a href="#persona" class="btn-ghost">サービスをもう一度見る</a>
+  <div class="cta-section__bg"></div>
+  <div class="cta-section__inner">
+    <h2 class="cta-section__title">
+      「こういうこと、相談できる？」<br>
+      <em>その一言から始まることの方が多いです。</em>
+    </h2>
+    <p class="cta-section__sub">
+      金額・規模・依頼になるかどうかも気にせず、まず気軽に話しかけてもらえると嬉しいです。
+      一緒にやってよかった、と思える関係でいられたら、それが一番です。
+    </p>
+    <div class="cta-btns">
+      <a href="#" class="btn-primary">DMで話しかける</a>
+      <a href="#persona" class="btn-ghost" style="color:white;border-color:rgba(255,255,255,0.6);">サービスをもう一度見る</a>
+    </div>
   </div>
 </section>
+
 
 <footer class="site-footer">
   <p class="site-footer__name">Hanaui PR｜橋本花織</p>
