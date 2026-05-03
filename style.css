@@ -218,45 +218,67 @@ body {
 .skill-card__title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
 .skill-card__desc { font-size: 13px; color: var(--text-sub); line-height: 1.75; }
 
-/* ─── AI スピード実績 ─── */
-.ai-impact {
-  background: var(--primary-light);
-  border-radius: 20px;
-  padding: 32px 36px;
-  margin: 32px 0 40px;
+/* ─── AI パイプライン ─── */
+.ai-pipeline {
+  display: flex; align-items: stretch; gap: 0;
+  margin: 32px 0 12px;
 }
-.ai-impact__heading {
-  font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
-  color: var(--primary-dark); margin-bottom: 20px;
-  text-transform: uppercase;
+.pipeline-step {
+  flex: 1; text-align: center; padding: 20px 12px;
+  background: white; border-radius: 14px;
+  box-shadow: var(--shadow-sm);
 }
-.ai-impact__row {
-  display: grid;
-  grid-template-columns: 1fr 80px 24px 1fr;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 0;
-  border-top: 1px solid rgba(232,169,78,0.2);
+.pipeline-step__icon { font-size: 26px; margin-bottom: 8px; }
+.pipeline-step__label { font-size: 13px; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
+.pipeline-step__time {
+  font-size: 12px; color: var(--primary-dark); font-weight: 700;
+  background: var(--primary-light); border-radius: 999px;
+  padding: 2px 10px; display: inline-block;
 }
-.ai-impact__row:first-of-type { border-top: none; }
-.ai-impact__task {
-  font-size: 14px; font-weight: 700; color: var(--text-primary);
+.pipeline-arrow {
+  display: flex; align-items: center;
+  font-size: 20px; color: var(--primary-dark);
+  padding: 0 10px; flex-shrink: 0; font-weight: 700;
 }
-.ai-impact__before {
+.pipeline-note {
+  text-align: center; font-size: 13px; color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+/* ─── Before/After 比較 ─── */
+.ai-compare-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 12px;
+}
+.ai-compare-card {
+  background: white; border-radius: 14px;
+  padding: 20px 22px; box-shadow: var(--shadow-sm);
+  border-left: 3px solid var(--primary);
+}
+.ai-compare-card__task {
+  font-size: 12px; font-weight: 700; color: var(--text-muted);
+  margin-bottom: 10px; letter-spacing: 0.04em;
+}
+.ai-compare-card__flow {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.ai-compare-card__before {
   font-size: 13px; color: var(--text-muted);
-  text-align: right;
+  text-decoration: line-through;
 }
-.ai-impact__arrow {
-  text-align: center; color: var(--primary-dark); font-weight: 700;
+.ai-compare-card__arrow {
+  color: var(--primary-dark); font-weight: 700; font-size: 14px; flex-shrink: 0;
 }
-.ai-impact__after {
+.ai-compare-card__after {
   font-size: 14px; font-weight: 700; color: var(--primary-dark);
 }
-.ai-impact__note {
-  font-size: 13px; color: var(--text-sub);
-  margin-top: 20px; padding-top: 16px;
-  border-top: 1px solid rgba(232,169,78,0.2);
-  line-height: 1.8;
+.ai-compare-note {
+  font-size: 13px; color: var(--text-muted);
+  text-align: right; margin-bottom: 40px;
+}
+.skills-label {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--text-muted); margin-bottom: 16px;
 }
 
 /* ─── 診断クイズ ─── */
@@ -492,11 +514,10 @@ body {
   .ai-banner__overlay { padding: 24px 28px; }
   .ai-banner__overlay h3 { font-size: 18px; }
   .cta-section { padding: 72px 24px; }
-  .ai-impact { padding: 24px 20px; }
-  .ai-impact__row { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
-  .ai-impact__before { grid-column: 2; grid-row: 1; }
-  .ai-impact__arrow { display: none; }
-  .ai-impact__after { grid-column: 1 / -1; grid-row: 2; color: var(--primary-dark); font-size: 13px; }
+  .ai-pipeline { flex-wrap: wrap; }
+  .ai-pipeline .pipeline-step { flex: 1 1 40%; }
+  .ai-pipeline .pipeline-arrow:nth-child(4) { display: none; }
+  .ai-compare-grid { grid-template-columns: 1fr; }
   .quiz-section { padding: 56px 24px; }
   .quiz-options--2col { grid-template-columns: 1fr; }
   .quiz-options--3col { grid-template-columns: 1fr 1fr; }
