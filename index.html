@@ -7,17 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* ─── リセット ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     img { max-width: 100%; display: block; }
 
-    /* ─── カラー変数 ─── */
     :root {
       --primary:       #FDC275;
       --primary-dark:  #E8A94E;
       --primary-light: #FEE9C8;
       --bg-page:       #FBFEFF;
-      --bg-surface:    rgba(255,255,255,0.9);
       --text-primary:  #333333;
       --text-sub:      #4A4A4A;
       --text-muted:    #78909C;
@@ -26,7 +23,6 @@
       --shadow-md:     0px 4px 12px rgba(0,0,0,0.12);
     }
 
-    /* ─── ベース ─── */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI",
                    YuGothic, "Yu Gothic Medium", "Yu Gothic", "Noto Sans JP",
@@ -178,33 +174,30 @@
       max-width: 860px;
       margin: 0 auto;
     }
-    .bg-warm {
-      background: #FFF8F0;
-    }
 
     /* ─── ストーリー ─── */
     .story__quote {
       font-family: "Noto Serif JP", serif;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
       color: var(--primary-dark);
       line-height: 1.6;
-      padding: 24px 32px;
+      padding: 28px 32px 24px 44px;
       background: var(--primary-light);
       border-radius: 12px;
       margin: 32px 0;
       position: relative;
     }
     .story__quote::before {
-      content: """;
-      font-size: 64px;
+      content: "\201C";
+      font-size: 72px;
       color: var(--primary);
-      opacity: 0.35;
+      opacity: 0.3;
       position: absolute;
-      top: -8px;
-      left: 16px;
+      top: -4px;
+      left: 12px;
       line-height: 1;
-      font-family: serif;
+      font-family: "Noto Serif JP", serif;
     }
     .story p {
       font-size: 15px;
@@ -213,12 +206,12 @@
       margin-bottom: 16px;
     }
 
-    /* ─── できること（3列グリッド）─── */
+    /* ─── できること ─── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 16px;
-      margin-top: 8px;
+      margin-top: 24px;
     }
     .skill-card {
       background: white;
@@ -226,14 +219,12 @@
       padding: 24px;
       box-shadow: var(--shadow-sm);
       transition: all 0.2s ease;
+      border-top: 3px solid var(--primary-light);
     }
     .skill-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
-    }
-    .skill-card__emoji {
-      font-size: 28px;
-      margin-bottom: 12px;
+      border-top-color: var(--primary);
     }
     .skill-card__tag {
       display: inline-block;
@@ -263,24 +254,19 @@
       border-radius: 16px;
       padding: 32px;
       box-shadow: var(--shadow-sm);
-      display: flex;
-      gap: 24px;
-      align-items: flex-start;
-      margin-top: 24px;
-    }
-    .ai-highlight__icon {
-      font-size: 40px;
-      flex-shrink: 0;
+      border-left: 4px solid var(--primary);
+      margin-bottom: 24px;
     }
     .ai-highlight__body h3 {
       font-size: 17px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      color: var(--text-primary);
     }
     .ai-highlight__body p {
       font-size: 14px;
       color: var(--text-sub);
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
     /* ─── ペルソナタブ ─── */
@@ -307,12 +293,9 @@
       border-color: var(--primary);
       color: white;
     }
-    .persona-panel {
-      display: none;
-    }
-    .persona-panel.active {
-      display: block;
-    }
+    .persona-panel { display: none; }
+    .persona-panel.active { display: block; }
+
     .persona-header {
       background: white;
       border-radius: 12px;
@@ -320,11 +303,10 @@
       box-shadow: var(--shadow-sm);
       margin-bottom: 16px;
     }
-    .persona-header__emoji { font-size: 36px; margin-bottom: 12px; }
     .persona-header__title {
       font-size: 18px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       color: var(--text-primary);
     }
     .persona-header__desc {
@@ -335,10 +317,8 @@
       border-radius: 8px;
       padding: 16px;
     }
-    .service-list {
-      display: grid;
-      gap: 12px;
-    }
+
+    .service-list { display: grid; gap: 12px; }
     .service-item {
       background: white;
       border-radius: 10px;
@@ -348,13 +328,13 @@
       gap: 16px;
       align-items: flex-start;
     }
-    .service-item__bullet {
-      width: 32px;
-      height: 32px;
+    .service-item__num {
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: var(--primary-light);
       color: var(--primary-dark);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -387,18 +367,17 @@
       box-shadow: var(--shadow-sm);
       text-align: center;
     }
-    .avail-card__emoji { font-size: 32px; margin-bottom: 12px; }
     .avail-card__label {
       font-size: 12px;
       color: var(--text-muted);
       font-weight: 700;
       letter-spacing: 0.06em;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .avail-card__value {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
-      color: var(--text-primary);
+      color: var(--primary-dark);
     }
 
     /* ─── CTA ─── */
@@ -451,27 +430,22 @@
       .hero { padding: 56px 20px 64px; }
       .section { padding: 48px 20px; }
       .btn-ghost { margin-left: 0; }
-      .ai-highlight { flex-direction: column; }
-      .persona-tabs { gap: 6px; }
       .persona-tab { font-size: 12px; padding: 7px 14px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ヘッダー -->
 <header class="site-header">
   <span class="site-header__logo">Hanaui PR｜橋本花織</span>
-  <a href="#contact" class="site-header__back">↓ 相談してみる</a>
+  <a href="#contact" class="site-header__back">相談してみる &darr;</a>
 </header>
 
-
-<!-- ヒーロー -->
 <section class="hero">
   <div class="hero__deco hero__deco--1"></div>
   <div class="hero__deco hero__deco--2"></div>
   <div class="hero__inner">
-    <div class="pill-badge">✦ Hearth Portメンバーへ</div>
+    <div class="pill-badge">Hearth Portメンバーへ</div>
     <h1 class="hero__title">
       届かないところに手を伸ばす、<br>
       <em>「孫の手」みたいな存在でいたい。</em>
@@ -479,18 +453,15 @@
     <p class="hero__sub">
       才能も経験も独自の視点も、ちゃんとある。<br>
       なのに「届け方がわからない」「一歩踏み出せない」——<br>
-      そういう理由で機会を逃している方の、<em style="color:var(--primary-dark);font-style:normal">一番近くに寄り添うサポート</em>をしています。
+      そういう理由で機会を逃している方の、<em style="color:var(--primary-dark);font-style:normal;">一番近くに寄り添うサポート</em>をしています。
     </p>
     <a href="#contact" class="btn-primary">気軽に話しかけてみる</a>
     <a href="#persona" class="btn-ghost">サービス一覧を見る</a>
   </div>
 </section>
 
-
 <hr class="section-divider">
 
-
-<!-- ストーリー -->
 <div class="section story">
   <p class="section__eyebrow">STORY</p>
   <h2 class="section__title">なぜ、これをやっているか</h2>
@@ -504,57 +475,47 @@
     「一人では見えなかった景色を見せてもらった」
   </div>
   <p>それがすごく嬉しくて。3ヶ月の契約は今も続いています。今は広報だけじゃなく、ブログ更新・ビジコン挑戦サポート・出前授業の企画営業——現場に集中できるよう、バックオフィスから事業全体を支える「万事屋（よろずや）」みたいな存在になっています。</p>
-  <p>ハスポのみなさんの自己紹介を読んで、こういうことをここでもやりたいな、と思いました。<br>ここで営業っぽいことがしたいわけじゃなく、お互いにとってWin-Winで「一緒にやってよかった」と思える関係でいられたら、それが一番です。</p>
+  <p>ハスポのみなさんの自己紹介を読んで、こういうことをここでもやりたいな、と思いました。ここで営業っぽいことがしたいわけじゃなく、お互いにとってWin-Winで「一緒にやってよかった」と思える関係でいられたら、それが一番です。</p>
 </div>
-
 
 <hr class="section-divider">
 
-
-<!-- AIの話 -->
 <div class="section">
   <p class="section__eyebrow">AI × 広報PR</p>
   <h2 class="section__title">AIをどれだけ使っているか、<br>何ができるか</h2>
   <div class="ai-highlight">
-    <div class="ai-highlight__icon">🤖</div>
     <div class="ai-highlight__body">
       <h3>Claude Codeをほぼ毎日使っています</h3>
       <p>コードを書くための道具というより——文章の設計・量産・サイト制作・ドキュメント自動生成まで、実務のかなりの部分をAIと組み合わせて動かしている感じです。以前なら数日かかっていた作業が数時間で終わることも多く、そのコスト削減をそのままサポート費用の負担軽減につなげられるのが、今の私の強みのひとつです。</p>
     </div>
   </div>
-  <div class="skills-grid" style="margin-top:24px;">
+  <div class="skills-grid">
     <div class="skill-card">
-      <div class="skill-card__emoji">📝</div>
       <span class="skill-card__tag">ブログ・Web</span>
       <p class="skill-card__title">ホームページ記事の自動更新化</p>
       <p class="skill-card__desc">テーマを渡せば構成・本文・タイトルを自動生成。毎週・毎月の更新の手間をぐっと減らす仕組みを作れます。</p>
     </div>
     <div class="skill-card">
-      <div class="skill-card__emoji">💬</div>
       <span class="skill-card__tag">LINE設計</span>
       <p class="skill-card__title">LINE公式アカウントの設計</p>
       <p class="skill-card__desc">問い合わせフロー・自動応答・ステップ配信の設計。「どこに誘導するか」の動線を一緒に整えます。</p>
     </div>
     <div class="skill-card">
-      <div class="skill-card__emoji">✍️</div>
       <span class="skill-card__tag">発信設計</span>
       <p class="skill-card__title">noteのネタ出し＋記事構成</p>
       <p class="skill-card__desc">12本分の記事タイトル案と書きやすい構成テンプレートをセットで渡します。ネタ切れが起きにくくなります。</p>
     </div>
     <div class="skill-card">
-      <div class="skill-card__emoji">🏆</div>
       <span class="skill-card__tag">コンテスト</span>
       <p class="skill-card__title">ビジネスコンテスト書類サポート</p>
       <p class="skill-card__desc">事業の言語化・審査員に刺さる切り口の設計・応募書類の構成整理をサポートします。</p>
     </div>
     <div class="skill-card">
-      <div class="skill-card__emoji">🔍</div>
       <span class="skill-card__tag">リサーチ</span>
       <p class="skill-card__title">市場・競合リサーチの効率化</p>
       <p class="skill-card__desc">自分で調べると時間がかかりすぎる情報収集を、AIで短時間で整理した形でお渡しします。</p>
     </div>
     <div class="skill-card">
-      <div class="skill-card__emoji">🌐</div>
       <span class="skill-card__tag">Web制作</span>
       <p class="skill-card__title">LP・ポートフォリオの制作</p>
       <p class="skill-card__desc">「まず形にしたい」方向けに、何をやっている人か・どう依頼するかが伝わる実用的なページを作ります。</p>
@@ -562,55 +523,50 @@
   </div>
 </div>
 
-
 <hr class="section-divider">
 
-
-<!-- ペルソナ別サービス -->
 <div id="persona" class="section">
   <p class="section__eyebrow">FOR WHOM</p>
   <h2 class="section__title">どんな方に、何ができるか</h2>
-
   <div class="persona-tabs">
-    <button class="persona-tab active" onclick="showPersona('a', this)">🎨 作り手・表現者</button>
-    <button class="persona-tab" onclick="showPersona('b', this)">💼 会社員×副業</button>
-    <button class="persona-tab" onclick="showPersona('c', this)">✈️ 海外・ノマド</button>
-    <button class="persona-tab" onclick="showPersona('d', this)">🌱 育休・専業から</button>
-    <button class="persona-tab" onclick="showPersona('e', this)">🏡 ローカル事業者</button>
-    <button class="persona-tab" onclick="showPersona('f', this)">🚀 フリーランス</button>
+    <button class="persona-tab active" onclick="showPersona('a', this)">作り手・表現者</button>
+    <button class="persona-tab" onclick="showPersona('b', this)">会社員×副業</button>
+    <button class="persona-tab" onclick="showPersona('c', this)">海外・ノマド</button>
+    <button class="persona-tab" onclick="showPersona('d', this)">育休・専業から</button>
+    <button class="persona-tab" onclick="showPersona('e', this)">ローカル事業者</button>
+    <button class="persona-tab" onclick="showPersona('f', this)">フリーランス</button>
   </div>
 
-  <!-- A: 作り手・表現者 -->
+  <!-- A -->
   <div id="persona-a" class="persona-panel active">
     <div class="persona-header">
-      <div class="persona-header__emoji">🎨</div>
       <p class="persona-header__title">作り手・表現者タイプ</p>
       <p class="persona-header__desc">ガラス作品、写真、イラスト、ZINEなど、すでに「作品」がある方。センスも表現力も、ちゃんとある。なのに「売る・届ける・言語化する」部分だけが手薄で——「好きって言ってくれる人はいるんだけど……」って感じている方に届いてほしいです。</p>
     </div>
     <div class="service-list">
       <div class="service-item">
-        <div class="service-item__bullet">📰</div>
+        <div class="service-item__num">1</div>
         <div>
           <p class="service-item__title">プレスリリース作成</p>
           <p class="service-item__desc">個展・ZINE発売・新作発表のタイミングで、生活系・旅行系・アート系メディアに向けたプレスリリースを作ります。「こんなイベントをやります」ではなく「なぜ今このアーティストが注目されるのか」という時流起点の構成で。アプローチ先のメディアリストアップまで込みで対応。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">🛒</div>
+        <div class="service-item__num">2</div>
         <div>
           <p class="service-item__title">オンラインショップの文章整備</p>
           <p class="service-item__desc">BASE・STORES・BOOTHの商品説明文・プロフィール・ショップコンセプト文をセットで作ります。「何を売っているかの説明」じゃなく「なぜあなたから買いたいのか」を読んだ人が感じる文章にすることを意識しています。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">📚</div>
+        <div class="service-item__num">3</div>
         <div>
           <p class="service-item__title">ZINE電子版の制作・販売ページ設計</p>
           <p class="service-item__desc">紙のZINEをPDF化して電子販売できる形に整えます。BOOTHのショップページ文章とセットで、全国・海外から買える状態を一気に作ります。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">🌐</div>
+        <div class="service-item__num">4</div>
         <div>
           <p class="service-item__title">ポートフォリオサイト制作</p>
           <p class="service-item__desc">写真・イラスト・デザイン作品を見やすく並べたポートフォリオサイトをStudioで制作。仕事依頼の問い合わせフォームやSNSへのリンク整備も込みで対応します。</p>
@@ -619,30 +575,29 @@
     </div>
   </div>
 
-  <!-- B: 会社員×副業 -->
+  <!-- B -->
   <div id="persona-b" class="persona-panel">
     <div class="persona-header">
-      <div class="persona-header__emoji">💼</div>
       <p class="persona-header__title">会社員 × 副業・発信スタートタイプ</p>
       <p class="persona-header__desc">本業の軸はある。でも「何を・どう発信するか」が言語化できていなくて動き出せていない方。2つ以上の経験や属性を持っているのに一言で言い表せない。「自分が発信できるほどのことなんてあるのか……」ってなっちゃう方へ。その「一言で言えない感じ」、実はポジションになるんです。</p>
     </div>
     <div class="service-list">
       <div class="service-item">
-        <div class="service-item__bullet">💡</div>
+        <div class="service-item__num">1</div>
         <div>
           <p class="service-item__title">ニッチポジションの言語化</p>
           <p class="service-item__desc">「建築の仕事 × カメラ」「IT企業勤務 × 地方移住 × 育児」のように、複数の経験や属性を掛け合わせた「あなたにしかないポジション」を一文に落とします。1〜2時間のヒアリングで作ります。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">✍️</div>
+        <div class="service-item__num">2</div>
         <div>
           <p class="service-item__title">note・ブログの発信設計</p>
           <p class="service-item__desc">最初の12本の記事テーマと、書きやすい順番、記事構成テンプレートをセットで渡します。「何を書くか」と「どう構成するか」は私が設計するので、あとは書くだけの状態にします。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">📱</div>
+        <div class="service-item__num">3</div>
         <div>
           <p class="service-item__title">Instagram × noteの連携設計</p>
           <p class="service-item__desc">Instagramで「興味を持ってもらう」→ noteで「深く読んでもらう」という2段階の動線を設計。2つのアカウントがバラバラにならない設計にします。</p>
@@ -651,30 +606,29 @@
     </div>
   </div>
 
-  <!-- C: 海外・ノマド -->
+  <!-- C -->
   <div id="persona-c" class="persona-panel">
     <div class="persona-header">
-      <div class="persona-header__emoji">✈️</div>
       <p class="persona-header__title">海外・ノマド生活者タイプ</p>
       <p class="persona-header__desc">海外在住・ノマドライフ・多拠点生活など、日本に住んでいる人にはない体験・視点・環境を持っている方。その経験、めちゃくちゃ価値があるんですが——日本のオーディエンスへの届け方が整っていないことが多いんです。「向こうにいる間にやっておけばよかった」ってなる前に、一緒に動けたらと思います。</p>
     </div>
     <div class="service-list">
       <div class="service-item">
-        <div class="service-item__bullet">🗺️</div>
+        <div class="service-item__num">1</div>
         <div>
           <p class="service-item__title">旅・生活ブログのコンセプト設計</p>
           <p class="service-item__desc">「何を届けるためのブログか」というコンセプトから入り、読者像・記事の方向性・最初の10本のテーマを設計。日本にいては代わりに体験できない視点を、日本人読者に刺さる切り口で発信する設計にします。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">🔀</div>
+        <div class="service-item__num">2</div>
         <div>
           <p class="service-item__title">海外経験 × 専門性のダブル発信設計</p>
           <p class="service-item__desc">「日本語教師 × 旅ノマド」「デザイナー × 元バックパッカー」のように、海外経験と職業・専門性を掛け合わせた独自ポジションで発信する戦略を設計。どの媒体で・何を・どの頻度で発信するかまで整理します。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">📰</div>
+        <div class="service-item__num">3</div>
         <div>
           <p class="service-item__title">日本メディアへのプレスリリース</p>
           <p class="service-item__desc">海外在住者が日本のライフスタイル系・旅行系・子育て系メディアで取り上げられるためのプレスリリースを作ります。「現地にいるからこそ書けること」を切り口にすることで、単なる旅行記とは違う取材価値が生まれます。</p>
@@ -683,37 +637,36 @@
     </div>
   </div>
 
-  <!-- D: 育休・専業から -->
+  <!-- D -->
   <div id="persona-d" class="persona-panel">
     <div class="persona-header">
-      <div class="persona-header__emoji">🌱</div>
       <p class="persona-header__title">育休・専業主婦から何かを始めたいタイプ</p>
       <p class="persona-header__desc">「何かやりたい」という気持ちはある。でも「何を・どこから始めればいいか」が見えていない方。「そんな経験、誰でもあるじゃないですか」って思ってること、実はニッチで需要があったりするんですよね。一緒に棚卸ししましょう。</p>
     </div>
     <div class="service-list">
       <div class="service-item">
-        <div class="service-item__bullet">🪞</div>
+        <div class="service-item__num">1</div>
         <div>
           <p class="service-item__title">強みの棚卸し + 自己PR文の作成</p>
           <p class="service-item__desc">これまでの仕事・子育て・趣味・好きなことをヒアリングして「私にしか書けないもの」を引き出します。公務員経験、飲食業・日本酒の知識、福祉の現場、多子育児のリアルなど——「それって強みになるの？」と感じているものが、実はニッチで需要のある発信テーマになることがほとんどです。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">📋</div>
+        <div class="service-item__num">2</div>
         <div>
           <p class="service-item__title">note発信テンプレートの提供</p>
           <p class="service-item__desc">「体験記録型」「学び共有型」「日常考察型」の3パターンの記事構成テンプレートを渡します。テーマを当てはめるだけで記事が書けるようになるので、「書きたいけど書き方がわからない」という状態を解消します。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">🛍️</div>
+        <div class="service-item__num">3</div>
         <div>
           <p class="service-item__title">小さなデジタル商品の設計</p>
           <p class="service-item__desc">得意なことや経験を、BASE・BOOTHで100〜500円で売れる形（PDFチェックリスト・テンプレート・まとめ資料）にパッケージングします。設計・タイトル・説明文・価格設定まで一緒に考えます。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">🏆</div>
+        <div class="service-item__num">4</div>
         <div>
           <p class="service-item__title">ビジネスコンテストへの挑戦サポート</p>
           <p class="service-item__desc">やりたいことをビジコンの応募書類にまとめる作業は、自分のことだからこそ難しいんですよね。事業の強みと価値の整理、審査員に刺さる切り口の設計、書類全体の構成作りをサポートします。</p>
@@ -722,30 +675,29 @@
     </div>
   </div>
 
-  <!-- E: ローカル事業者 -->
+  <!-- E -->
   <div id="persona-e" class="persona-panel">
     <div class="persona-header">
-      <div class="persona-header__emoji">🏡</div>
       <p class="persona-header__title">ローカル事業者・場づくりタイプ</p>
       <p class="persona-header__desc">ユニークな場所・コンセプト・ストーリーを持っている方。「1日1名限定」「離島産の柑橘」「屋台での婚活」など、数字だけでは語れない背景と物語がある事業。でも今は、地元やSNSのフォロワーの範囲にしか届いていない——そんな方です。「プレスリリースって大企業がやるもの」という先入観、ぜひ捨ててください。</p>
     </div>
     <div class="service-list">
       <div class="service-item">
-        <div class="service-item__bullet">📰</div>
+        <div class="service-item__num">1</div>
         <div>
           <p class="service-item__title">プレスリリース作成（全国メディア向け）</p>
           <p class="service-item__desc">「なぜ今このサービスが生まれたのか」を時流と絡めた構成で書き、旅行系・ライフスタイル系・地方移住系の媒体にアプローチ。プレスリリースとは「記者が記事にしたくなる素材を渡す文章」です。その視点で構成を設計します。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">✏️</div>
+        <div class="service-item__num">2</div>
         <div>
           <p class="service-item__title">LP・事業紹介文のリニューアル</p>
           <p class="service-item__desc">今あるサイトやサービス紹介文を、「何ができるかの説明」から「読んだ人が行きたくなる・依頼したくなる文章」に書き直します。トップキャッチ・コンセプト文・依頼の流れ・FAQの4点をセットでリニューアル。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">📱</div>
+        <div class="service-item__num">3</div>
         <div>
           <p class="service-item__title">SNS発信の2軸設計</p>
           <p class="service-item__desc">「地元の人に知ってもらう」発信と「全国・海外から来てもらう」発信は、ターゲットが違うので分けて設計する必要があります。どの媒体で・何を・どんな言葉で発信するかを整理します。</p>
@@ -754,37 +706,36 @@
     </div>
   </div>
 
-  <!-- F: フリーランス -->
+  <!-- F -->
   <div id="persona-f" class="persona-panel">
     <div class="persona-header">
-      <div class="persona-header__emoji">🚀</div>
       <p class="persona-header__title">フリーランス・個人事業主（稼働中）タイプ</p>
       <p class="persona-header__desc">すでに動いている。複数のスキルや肩書きを持っている。でも「サービスとして整理できていない」「新規の仕事は紹介経由がほとんどで、仕組みがない」という状態の方。「それ、私のことだ……」ってなった方、一緒に整理しましょう。</p>
     </div>
     <div class="service-list">
       <div class="service-item">
-        <div class="service-item__bullet">🌐</div>
+        <div class="service-item__num">1</div>
         <div>
           <p class="service-item__title">サービスLP文章の作成</p>
           <p class="service-item__desc">今やっていることを整理して、ターゲット・強み・実績・依頼の流れ・FAQを揃えた文章パッケージを作ります。Studioでのサイト制作もセットで対応できます。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">👤</div>
+        <div class="service-item__num">2</div>
         <div>
           <p class="service-item__title">プロフィール文の4パターン整備</p>
           <p class="service-item__desc">note用・Instagram用・名刺用・提案書用、それぞれ用途の違うプロフィール文を一度に作ります。まず「あなたらしさを表す一文」を決めてから、媒体ごとに長さと切り口を変えていきます。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">📊</div>
+        <div class="service-item__num">3</div>
         <div>
           <p class="service-item__title">実績・事例の文章化</p>
           <p class="service-item__desc">「○○をやりました」という実績の書き方を、「クライアントにとって何が変わったか」という視点の文章に変えます。実績は「変化と数字」で語ることで、読んだ人への説得力がぐっと上がります。</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="service-item__bullet">📧</div>
+        <div class="service-item__num">4</div>
         <div>
           <p class="service-item__title">クライアント向けメール雛形作成</p>
           <p class="service-item__desc">問い合わせへの返信・ヒアリング依頼・提案書添付メールの3本をひな形として作ります。毎回ゼロから書かなくてよくなるので、レスポンスの質と速度が上がります。</p>
@@ -794,39 +745,30 @@
   </div>
 </div>
 
-
 <hr class="section-divider">
 
-
-<!-- 稼働感 -->
 <div class="section">
   <p class="section__eyebrow">AVAILABILITY</p>
   <h2 class="section__title">どのくらい動けるか</h2>
   <p style="font-size:15px;color:var(--text-sub);line-height:1.9;margin-bottom:24px;">本業があるので、がっつりフルコミットは難しいですが、月に数件くらいなら一緒に動けます。「ちょっとだけ手を貸してほしい」から「一緒にじっくり作りたい」まで、話しながら決められたら。</p>
   <div class="availability-cards">
     <div class="avail-card">
-      <div class="avail-card__emoji">📅</div>
       <p class="avail-card__label">月あたりの件数</p>
       <p class="avail-card__value">数件まで</p>
     </div>
     <div class="avail-card">
-      <div class="avail-card__emoji">⚡</div>
       <p class="avail-card__label">小さな相談</p>
       <p class="avail-card__value">もちろん大歓迎</p>
     </div>
     <div class="avail-card">
-      <div class="avail-card__emoji">💬</div>
       <p class="avail-card__label">まず気軽に</p>
       <p class="avail-card__value">DM・コメントで</p>
     </div>
   </div>
-  <p style="font-size:14px;color:var(--text-muted);margin-top:20px;">プレスリリース1本、発信の方向性を整理したい、noteのネタが尽きてきた、サイトをとりあえず形にしたい——「小さいかな？」と思うことでも全然大丈夫です。むしろそこから始まることの方が多いので🙌</p>
+  <p style="font-size:14px;color:var(--text-muted);margin-top:20px;">プレスリリース1本、発信の方向性を整理したい、noteのネタが尽きてきた、サイトをとりあえず形にしたい——「小さいかな？」と思うことでも全然大丈夫です。むしろそこから始まることの方が多いので。</p>
 </div>
 
-
-<!-- CTA -->
 <section id="contact" class="cta-section">
-  <p style="font-size:36px;margin-bottom:16px;">☕</p>
   <h2 class="cta-section__title">
     「こういうこと、相談できる？」<br>
     <em style="color:var(--primary-dark);font-style:normal;">その一言から始まることの方が多いです。</em>
@@ -841,13 +783,10 @@
   </div>
 </section>
 
-
-<!-- フッター -->
 <footer class="site-footer">
   <p class="site-footer__name">Hanaui PR｜橋本花織</p>
   <p class="site-footer__sub">広報代行・発信サポート・バックオフィス支援</p>
 </footer>
-
 
 <script>
   function showPersona(id, btn) {
@@ -857,6 +796,5 @@
     btn.classList.add('active');
   }
 </script>
-
 </body>
 </html>
